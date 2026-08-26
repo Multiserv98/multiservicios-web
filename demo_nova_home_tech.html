@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cámaras, redes Wi‑Fi, carpintería, muebles y acabados en Monterrey y área metropolitana." />
+  <title>NOVA | Tecnología, Carpintería y Acabados</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#111315;
+      --surface:#191c1f;
+      --surface-2:#212529;
+      --text:#f5f2ec;
+      --muted:#b8b1a6;
+      --wood:#b98a5b;
+      --wood-2:#d7b58e;
+      --line:rgba(255,255,255,.10);
+      --green:#25D366;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Manrope",system-ui,sans-serif;
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .eyebrow{
+      letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;
+      font-weight:800;color:var(--wood-2);margin-bottom:10px
+    }
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-family:"Playfair Display",serif}
+    h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;margin-bottom:16px}
+    .lead{color:var(--muted);max-width:720px;font-size:1.05rem}
+    section{padding:90px 0}
+
+    /* NAV */
+    header{
+      position:fixed;z-index:50;top:0;left:0;right:0;
+      backdrop-filter:blur(16px);
+      background:rgba(17,19,21,.78);
+      border-bottom:1px solid var(--line)
+    }
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.08em}
+    .logo-mark{
+      width:40px;height:40px;border:1px solid var(--wood);
+      display:grid;place-items:center;border-radius:10px;color:var(--wood-2);
+      font-family:"Playfair Display",serif;font-size:1.2rem
+    }
+    .nav-links{display:flex;align-items:center;gap:26px;color:#ddd;font-size:.92rem}
+    .nav-links a:hover{color:var(--wood-2)}
+    .nav-cta{
+      padding:11px 17px;border:1px solid var(--wood);border-radius:999px;color:var(--wood-2)
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100svh;display:grid;align-items:end;padding-top:130px;padding-bottom:70px;
+      background:
+        linear-gradient(90deg,rgba(10,12,13,.95) 0%,rgba(10,12,13,.75) 45%,rgba(10,12,13,.25) 100%),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1900&q=85") center/cover;
+      position:relative
+    }
+    .hero::after{
+      content:"";position:absolute;inset:auto 0 0;height:160px;
+      background:linear-gradient(transparent,var(--bg))
+    }
+    .hero-content{position:relative;z-index:2;max-width:790px}
+    .hero h1{font-size:clamp(3rem,7vw,6rem);line-height:.98;margin-bottom:22px}
+    .hero h1 span{color:var(--wood-2)}
+    .hero p{font-size:1.08rem;color:#d7d2cb;max-width:650px;margin-bottom:32px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:14px 21px;border-radius:999px;font-weight:800;font-size:.94rem;
+      transition:.2s ease;cursor:pointer;border:0
+    }
+    .btn-primary{background:var(--wood);color:#111}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--wood-2)}
+    .btn-outline{border:1px solid rgba(255,255,255,.3);color:#fff;background:rgba(0,0,0,.18)}
+    .btn-whatsapp{background:var(--green);color:#071b0d}
+    .btn-whatsapp:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .hero-stats{
+      margin-top:58px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      max-width:650px;border-top:1px solid rgba(255,255,255,.2);padding-top:22px
+    }
+    .stat strong{display:block;font-size:1.25rem}
+    .stat span{font-size:.82rem;color:#c7c1b8}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:42px}
+    .service{
+      padding:26px 20px;background:var(--surface);border:1px solid var(--line);
+      border-radius:18px;min-height:210px;transition:.22s ease
+    }
+    .service:hover{transform:translateY(-5px);border-color:rgba(185,138,91,.55)}
+    .service-icon{
+      width:48px;height:48px;border-radius:14px;background:rgba(185,138,91,.12);
+      display:grid;place-items:center;font-size:1.4rem;margin-bottom:28px
+    }
+    .service h3{font-size:1rem;margin-bottom:9px}
+    .service p{font-size:.86rem;color:var(--muted);margin-bottom:0}
+
+    /* PACKAGES */
+    .packages{background:#0d0f10}
+    .package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+    .package{
+      background:var(--surface);border:1px solid var(--line);border-radius:22px;
+      overflow:hidden;display:flex;flex-direction:column
+    }
+    .package.featured{border-color:rgba(185,138,91,.75);box-shadow:0 18px 60px rgba(0,0,0,.3)}
+    .package-img{height:220px;object-fit:cover}
+    .package-body{padding:26px;display:flex;flex-direction:column;flex:1}
+    .tag{
+      display:inline-block;width:max-content;font-size:.72rem;font-weight:800;
+      text-transform:uppercase;letter-spacing:.1em;color:var(--wood-2);
+      margin-bottom:12px
+    }
+    .package h3{font-size:1.3rem;margin-bottom:8px}
+    .price{font-size:2rem;font-weight:800;margin:6px 0 16px}
+    .price small{font-size:.82rem;color:var(--muted);font-weight:500}
+    .package ul{padding-left:19px;color:#d1cbc2;margin-bottom:24px;font-size:.9rem}
+    .package li{margin:6px 0}
+    .package .btn{margin-top:auto}
+
+    /* WORK */
+    .work-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:280px 280px;gap:16px;margin-top:42px}
+    .work{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line)}
+    .work:first-child{grid-row:1/3}
+    .work img{height:100%;object-fit:cover;transition:.5s ease}
+    .work:hover img{transform:scale(1.04)}
+    .work-info{
+      position:absolute;inset:auto 0 0;padding:22px;
+      background:linear-gradient(transparent,rgba(0,0,0,.86))
+    }
+    .work-info span{font-size:.75rem;color:var(--wood-2);font-weight:800;text-transform:uppercase}
+    .work-info h3{margin:4px 0 0}
+
+    /* PROCESS */
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px}
+    .step{padding:25px;border-top:1px solid var(--wood);background:linear-gradient(180deg,rgba(185,138,91,.08),transparent)}
+    .step-number{font-family:"Playfair Display";font-size:2.2rem;color:var(--wood-2)}
+    .step p{color:var(--muted);font-size:.9rem;margin-bottom:0}
+
+    /* CONTACT */
+    .contact-card{
+      background:
+        linear-gradient(120deg,rgba(15,17,18,.96),rgba(15,17,18,.72)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85") center/cover;
+      border:1px solid var(--line);border-radius:28px;padding:clamp(35px,7vw,80px)
+    }
+    .contact-card h2{max-width:750px}
+    .contact-card p{max-width:620px;color:#d2ccc4}
+
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#918b84;font-size:.84rem}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    /* FLOAT WA */
+    .wa-float{
+      position:fixed;z-index:60;right:20px;bottom:20px;width:60px;height:60px;
+      border-radius:50%;background:var(--green);display:grid;place-items:center;
+      box-shadow:0 12px 30px rgba(0,0,0,.4);font-size:1.65rem
+    }
+    .wa-float:hover{transform:scale(1.05)}
+
+    @media(max-width:980px){
+      .nav-links a:not(.nav-cta){display:none}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .package-grid{grid-template-columns:1fr 1fr}
+      .work-grid{grid-template-columns:1fr 1fr;grid-template-rows:320px 260px 260px}
+      .work:first-child{grid-column:1/3;grid-row:auto}
+      .process-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:650px){
+      section{padding:70px 0}
+      nav{height:68px}
+      .brand span:last-child{font-size:.8rem}
+      .hero{min-height:94svh;padding-bottom:45px;background-position:62% center}
+      .hero-stats{grid-template-columns:1fr 1fr;gap:18px}
+      .hero-stats .stat:last-child{grid-column:1/3}
+      .services-grid,.package-grid,.process-grid{grid-template-columns:1fr}
+      .work-grid{display:grid;grid-template-columns:1fr;grid-template-rows:none}
+      .work:first-child{grid-column:auto}
+      .work{height:280px}
+      .contact-card{border-radius:20px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#inicio">
+        <div class="logo-mark">N</div>
+        <span>NOVA · HOME & TECH</span>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#paquetes">Paquetes</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto" class="nav-cta">Cotizar</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <div class="eyebrow">Tecnología · Diseño · Instalación</div>
+      <h1>Mejoramos tus espacios.<br><span>Protegemos lo que importa.</span></h1>
+      <p>Soluciones para hogar y negocio en videovigilancia, redes Wi‑Fi, carpintería, muebles a medida y acabados.</p>
+      <div class="actions">
+        <a href="#paquetes" class="btn btn-primary">Ver paquetes</a>
+        <a href="#" class="btn btn-whatsapp wa-link" data-msg="Hola, vi su página y me gustaría solicitar una cotización.">💬 Cotizar por WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>5 áreas</strong><span>de servicio integral</span></div>
+        <div class="stat"><strong>A medida</strong><span>proyectos personalizados</span></div>
+        <div class="stat"><strong>MTY + área metropolitana</strong><span>zona de servicio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="eyebrow">Lo que hacemos</div>
+      <h2>Un solo equipo para tecnología y acabados.</h2>
+      <p class="lead">Desde proteger tu propiedad y mejorar la conectividad, hasta transformar un muro o fabricar un mueble a medida.</p>
+
+      <div class="services-grid">
+        <article class="service">
+          <div class="service-icon">📷</div>
+          <h3>Cámaras y videovigilancia</h3>
+          <p>Instalación, configuración, grabación y acceso remoto desde celular.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">📶</div>
+          <h3>Redes y Wi‑Fi</h3>
+          <p>Cobertura, cableado, puntos de red, routers, mesh y optimización.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🪚</div>
+          <h3>Carpintería</h3>
+          <p>Fabricación e instalación de soluciones funcionales y decorativas.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🪵</div>
+          <h3>Muebles a medida</h3>
+          <p>Centros de TV, muebles flotantes, repisas, escritorios y más.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">✨</div>
+          <h3>Acabados</h3>
+          <p>Lambrín, espejos, paneles decorativos y detalles para renovar espacios.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="packages" id="paquetes">
+    <div class="container">
+      <div class="eyebrow">Paquetes destacados</div>
+      <h2>Opciones claras para empezar tu proyecto.</h2>
+      <p class="lead">Precios de muestra. El costo final puede variar de acuerdo con medidas, materiales, distancias y condiciones de instalación.</p>
+
+      <div class="package-grid">
+        <article class="package featured">
+          <img class="package-img" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Muro decorativo con mueble">
+          <div class="package-body">
+            <span class="tag">Hogar · Más solicitado</span>
+            <h3>Paquete Muro Decorativo</h3>
+            <div class="price">$10,000 <small>MXN desde</small></div>
+            <ul>
+              <li>Forrado de 1 muro con lambrín</li>
+              <li>Espejo decorativo</li>
+              <li>Mueble chico en melamina</li>
+              <li>Instalación incluida</li>
+            </ul>
+            <a href="#" class="btn btn-whatsapp wa-link" data-msg="Hola, me interesa el Paquete Muro Decorativo desde $10,000 que vi en su página. ¿Me pueden dar más información?">💬 Me interesa este paquete</a>
+          </div>
+        </article>
+
+        <article class="package">
+          <img class="package-img" src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=900&q=80" alt="Cámara de seguridad">
+          <div class="package-body">
+            <span class="tag">Seguridad</span>
+            <h3>Paquete 4 Cámaras</h3>
+            <div class="price">$7,900 <small>MXN desde</small></div>
+            <ul>
+              <li>4 cámaras de videovigilancia</li>
+              <li>Grabador + almacenamiento básico</li>
+              <li>Configuración en celular</li>
+              <li>Instalación y cableado básico</li>
+            </ul>
+            <a href="#" class="btn btn-whatsapp wa-link" data-msg="Hola, me interesa el Paquete de 4 Cámaras desde $7,900 que vi en su página. Quisiera una cotización.">💬 Cotizar cámaras</a>
+          </div>
+        </article>
+
+        <article class="package">
+          <img class="package-img" src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=900&q=80" alt="Red WiFi para hogar">
+          <div class="package-body">
+            <span class="tag">Conectividad</span>
+            <h3>Wi‑Fi Hogar Plus</h3>
+            <div class="price">$3,500 <small>MXN desde</small></div>
+            <ul>
+              <li>Diagnóstico de cobertura</li>
+              <li>Instalación de solución Wi‑Fi / Mesh</li>
+              <li>Configuración y optimización</li>
+              <li>Pruebas de cobertura</li>
+            </ul>
+            <a href="#" class="btn btn-whatsapp wa-link" data-msg="Hola, me interesa el Paquete Wi‑Fi Hogar Plus desde $3,500 que vi en su página. ¿Me pueden apoyar con una cotización?">💬 Mejorar mi Wi‑Fi</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabajos">
+    <div class="container">
+      <div class="eyebrow">Portafolio</div>
+      <h2>Trabajos que hablan por nosotros.</h2>
+      <p class="lead">En la versión final estas imágenes se sustituyen por fotografías reales de los proyectos del cliente.</p>
+
+      <div class="work-grid">
+        <article class="work">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=85" alt="Centro de entretenimiento">
+          <div class="work-info"><span>Carpintería + acabado</span><h3>Centro de entretenimiento</h3></div>
+        </article>
+        <article class="work">
+          <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=85" alt="Cámara de seguridad">
+          <div class="work-info"><span>Videovigilancia</span><h3>Seguridad para negocio</h3></div>
+        </article>
+        <article class="work">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=85" alt="Mueble moderno">
+          <div class="work-info"><span>Mueble a medida</span><h3>Diseño en melamina</h3></div>
+        </article>
+        <article class="work">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=85" alt="Red y tecnología">
+          <div class="work-info"><span>Redes</span><h3>Cobertura y conectividad</h3></div>
+        </article>
+        <article class="work">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=85" alt="Sala decorada">
+          <div class="work-info"><span>Acabados</span><h3>Transformación de espacios</h3></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Así trabajamos</div>
+      <h2>De tu idea a un proyecto terminado.</h2>
+      <div class="process-grid">
+        <div class="step"><div class="step-number">01</div><h3>Cuéntanos tu idea</h3><p>Mándanos WhatsApp con fotos, medidas aproximadas o lo que necesitas.</p></div>
+        <div class="step"><div class="step-number">02</div><h3>Revisión</h3><p>Analizamos materiales, equipos, medidas y condiciones del lugar.</p></div>
+        <div class="step"><div class="step-number">03</div><h3>Cotización</h3><p>Recibes una propuesta clara con alcance, precio y tiempos.</p></div>
+        <div class="step"><div class="step-number">04</div><h3>Instalación</h3><p>Coordinamos el trabajo y dejamos tu proyecto listo para disfrutar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-card">
+        <div class="eyebrow">Cotiza tu proyecto</div>
+        <h2>¿Tienes una idea distinta a nuestros paquetes?</h2>
+        <p>Escríbenos por WhatsApp. Puedes mandar fotografías del espacio, medidas aproximadas o explicar qué necesitas y te ayudamos a preparar una opción.</p>
+        <a href="#" class="btn btn-whatsapp wa-link" data-msg="Hola, vi su página. Tengo un proyecto y quisiera solicitar una cotización personalizada.">💬 Enviar mensaje por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© 2026 NOVA · HOME & TECH. Página demostrativa.</span>
+    <span>Monterrey, Nuevo León · México</span>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="#" aria-label="Contactar por WhatsApp" data-msg="Hola, vi su página y quisiera información sobre sus servicios.">💬</a>
+
+<script>
+  // CAMBIA SOLO ESTE NÚMERO por el WhatsApp real.
+  // Formato México: 52 + 10 dígitos, sin +, espacios ni guiones.
+  const WHATSAPP_NUMBER = "528112345678";
+
+  document.querySelectorAll(".wa-link").forEach(link => {
+    const msg = link.dataset.msg || "Hola, quisiera más información.";
+    link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    link.target = "_blank";
+    link.rel = "noopener";
+  });
+</script>
+</body>
+</html>
